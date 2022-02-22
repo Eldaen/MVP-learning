@@ -19,6 +19,8 @@ final class AppWhatsNewViewController: UIViewController {
 		return self.view as! AppDetailHeaderView
 	}
 	
+	// MARK: - Init
+	
 	init(app: ITunesApp) {
 		self.app = app
 		super.init(nibName: nil, bundle: nil)
@@ -28,13 +30,20 @@ final class AppWhatsNewViewController: UIViewController {
 		fatalError("init(coder:) has not been implemented")
 	}
 	
+	// MARK: - LifeCycle
+	
 	override func loadView() {
-		self.view = AppDetailHeaderView()
+		self.view = AppWhatsNewView()
 	}
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		
 		fillData()
+	}
+	
+	// MARK: - Private methods
+	
+	private func fillData() {
+		
 	}
 }
