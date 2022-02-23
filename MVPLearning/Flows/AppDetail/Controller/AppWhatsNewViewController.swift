@@ -15,8 +15,8 @@ final class AppWhatsNewViewController: UIViewController {
 	private let app: ITunesApp
 	
 	/// Кастомная вью
-	private var appDetailHeaderView: AppDetailHeaderView {
-		return self.view as! AppDetailHeaderView
+	private var appWhatsNewView: AppWhatsNewView {
+		return self.view as! AppWhatsNewView
 	}
 	
 	// MARK: - Init
@@ -44,6 +44,13 @@ final class AppWhatsNewViewController: UIViewController {
 	// MARK: - Private methods
 	
 	private func fillData() {
+		guard let version = app.version,
+			  let notes = app.releaseNotes else {
+				  return
+			  }
 		
+		appWhatsNewView.titleLabel.text = "Что нового"
+		appWhatsNewView.subTitleLabel.text = "Версия \(version)"
+		appWhatsNewView.notesLabel.text = notes
 	}
 }

@@ -61,7 +61,6 @@ class AppDetailHeaderView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         configureUI()
     }
     
@@ -97,7 +96,8 @@ class AppDetailHeaderView: UIView {
             
             ratingLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 24),
             ratingLabel.leftAnchor.constraint(equalTo: imageView.leftAnchor),
-            ratingLabel.widthAnchor.constraint(equalToConstant: 100)
+            ratingLabel.widthAnchor.constraint(equalToConstant: 100),
+			ratingLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor),
         ])
     }
 }

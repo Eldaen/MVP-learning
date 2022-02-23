@@ -58,7 +58,6 @@ final class AppDetailViewController: UIViewController {
         
         NSLayoutConstraint.activate([
             headerViewController.view.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
-//            headerViewController.view.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor),
             headerViewController.view.leftAnchor.constraint(equalTo: self.view.leftAnchor),
             headerViewController.view.rightAnchor.constraint(equalTo: self.view.rightAnchor)
         ])
@@ -76,7 +75,7 @@ final class AppDetailViewController: UIViewController {
         
         NSLayoutConstraint.activate([
 			whatsNewViewController.view.topAnchor.constraint(equalTo: headerViewController.view.bottomAnchor, constant: 16),
-			whatsNewViewController.view.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor),
+			whatsNewViewController.view.heightAnchor.constraint(equalToConstant: 200),
 			whatsNewViewController.view.leftAnchor.constraint(equalTo: self.view.leftAnchor),
 			whatsNewViewController.view.rightAnchor.constraint(equalTo: self.view.rightAnchor)
         ])
