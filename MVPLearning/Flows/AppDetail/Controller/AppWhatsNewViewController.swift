@@ -43,6 +43,7 @@ final class AppWhatsNewViewController: UIViewController {
 	
 	// MARK: - Private methods
 	
+	/// Заполняет вью контроллера данными
 	private func fillData() {
 		guard let version = app.version,
 			  let notes = app.releaseNotes else {

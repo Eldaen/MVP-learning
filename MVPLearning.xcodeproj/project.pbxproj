@@ -13,6 +13,9 @@
 		BA994C8327C41A71007C8578 /* SearchBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA994C8227C41A71007C8578 /* SearchBuilder.swift */; };
 		D028B2E927C5337200FFE60C /* AppWhatsNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D028B2E827C5337200FFE60C /* AppWhatsNewViewController.swift */; };
 		D028B2EB27C5340F00FFE60C /* AppWhatsNewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D028B2EA27C5340F00FFE60C /* AppWhatsNewView.swift */; };
+		D028B2ED27C68D7000FFE60C /* AppScreenshotsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D028B2EC27C68D7000FFE60C /* AppScreenshotsViewController.swift */; };
+		D028B2EF27C68DC100FFE60C /* AppScreenshotsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D028B2EE27C68DC100FFE60C /* AppScreenshotsView.swift */; };
+		D028B2F127C6957700FFE60C /* AppScreenshotsCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D028B2F027C6957700FFE60C /* AppScreenshotsCollectionCell.swift */; };
 		D07B34E727C52B0100172807 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = D07B34E627C52B0100172807 /* Alamofire */; };
 		E0E1D2932034A3350011E01A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E1D2922034A3350011E01A /* AppDelegate.swift */; };
 		E0E1D2952034A3350011E01A /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E1D2942034A3350011E01A /* SearchViewController.swift */; };
@@ -45,6 +48,9 @@
 		BA994C8227C41A71007C8578 /* SearchBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBuilder.swift; sourceTree = "<group>"; };
 		D028B2E827C5337200FFE60C /* AppWhatsNewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppWhatsNewViewController.swift; sourceTree = "<group>"; };
 		D028B2EA27C5340F00FFE60C /* AppWhatsNewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppWhatsNewView.swift; sourceTree = "<group>"; };
+		D028B2EC27C68D7000FFE60C /* AppScreenshotsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppScreenshotsViewController.swift; sourceTree = "<group>"; };
+		D028B2EE27C68DC100FFE60C /* AppScreenshotsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppScreenshotsView.swift; sourceTree = "<group>"; };
+		D028B2F027C6957700FFE60C /* AppScreenshotsCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppScreenshotsCollectionCell.swift; sourceTree = "<group>"; };
 		E0E1D28F2034A3350011E01A /* MVPLearning.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MVPLearning.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0E1D2922034A3350011E01A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E0E1D2942034A3350011E01A /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -246,6 +252,8 @@
 				F8114FC422A3E77500102830 /* AppDetailView.swift */,
 				BA994C7A27C400E1007C8578 /* AppDetailHeaderView.swift */,
 				D028B2EA27C5340F00FFE60C /* AppWhatsNewView.swift */,
+				D028B2EE27C68DC100FFE60C /* AppScreenshotsView.swift */,
+				D028B2F027C6957700FFE60C /* AppScreenshotsCollectionCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -256,6 +264,7 @@
 				E0E1D3D0203C48D70011E01A /* AppDetailViewController.swift */,
 				BA994C7C27C40828007C8578 /* AppDetailHeaderViewController.swift */,
 				D028B2E827C5337200FFE60C /* AppWhatsNewViewController.swift */,
+				D028B2EC27C68D7000FFE60C /* AppScreenshotsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -468,11 +477,14 @@
 				E0E1D39F203AE7400011E01A /* ImageDownloader.swift in Sources */,
 				F8114FBE22A3DBF400102830 /* SearchView.swift in Sources */,
 				E0E1D395203AE5E20011E01A /* ITunesSearchResult.swift in Sources */,
+				D028B2F127C6957700FFE60C /* AppScreenshotsCollectionCell.swift in Sources */,
 				E0E1D392203AE58B0011E01A /* ITunesSearchService.swift in Sources */,
 				BA994C8327C41A71007C8578 /* SearchBuilder.swift in Sources */,
 				E0E1D2932034A3350011E01A /* AppDelegate.swift in Sources */,
+				D028B2EF27C68DC100FFE60C /* AppScreenshotsView.swift in Sources */,
 				E0E1D384203AE3620011E01A /* AppStartManager.swift in Sources */,
 				F8114FC122A3E5EE00102830 /* AppCellModel.swift in Sources */,
+				D028B2ED27C68D7000FFE60C /* AppScreenshotsViewController.swift in Sources */,
 				D028B2EB27C5340F00FFE60C /* AppWhatsNewView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

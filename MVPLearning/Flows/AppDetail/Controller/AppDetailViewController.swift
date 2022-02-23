@@ -14,6 +14,7 @@ final class AppDetailViewController: UIViewController {
 	
     private lazy var headerViewController = AppDetailHeaderViewController(app: app)
 	private lazy var whatsNewViewController = AppWhatsNewViewController(app: app)
+	private lazy var screenshotsViewController = AppScreenshotsViewController(app: app)
     
     private let imageDownloader = ImageDownloader()
     
@@ -31,6 +32,11 @@ final class AppDetailViewController: UIViewController {
     }
     
     // MARK: - Lifecycle
+	
+	override func loadView() {
+		super.loadView()
+		self.view = AppDetailView()
+	}
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,40 +50,60 @@ final class AppDetailViewController: UIViewController {
         view.backgroundColor = .white
         self.navigationController?.navigationBar.tintColor = UIColor.white;
         self.navigationItem.largeTitleDisplayMode = .never
-        
+		
         addHeaderViewController()
-        addWhatsNewViewController() //ДЗ
+        addWhatsNewViewController()
+		addScreenshotsViewController()
     }
     
+	/// Добавляет контроллер заголовка
     private func addHeaderViewController() {
         self.addChild(headerViewController)
-        self.view.addSubview(headerViewController.view)
+		appDetailView.scrollView.addSubview(headerViewController.view)
         
         headerViewController.didMove(toParent: self)
         headerViewController.view.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            headerViewController.view.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
+            headerViewController.view.topAnchor.constraint(equalTo: appDetailView.scrollView.topAnchor),
             headerViewController.view.leftAnchor.constraint(equalTo: self.view.leftAnchor),
             headerViewController.view.rightAnchor.constraint(equalTo: self.view.rightAnchor)
         ])
         
     }
     
+	/// Добавляет контроллер описания изменений в последней версии
     private func addWhatsNewViewController() {
-        //ДЗ: Добавить другие модели
-        
         self.addChild(whatsNewViewController)
-        self.view.addSubview(whatsNewViewController.view)
+		appDetailView.scrollView.addSubview(whatsNewViewController.view)
         
 		whatsNewViewController.didMove(toParent: self)
 		whatsNewViewController.view.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-			whatsNewViewController.view.topAnchor.constraint(equalTo: headerViewController.view.bottomAnchor, constant: 16),
-			whatsNewViewController.view.heightAnchor.constraint(equalToConstant: 200),
+			whatsNewViewController.view.topAnchor.constraint(
+				equalTo: headerViewController.view.bottomAnchor, constant: 16
+			),
 			whatsNewViewController.view.leftAnchor.constraint(equalTo: self.view.leftAnchor),
 			whatsNewViewController.view.rightAnchor.constraint(equalTo: self.view.rightAnchor)
         ])
     }
+	
+	/// Добавляет контроллер отображения скриншотов
+	private func addScreenshotsViewController() {
+		self.addChild(screenshotsViewController)
+		appDetailView.scrollView.addSubview(screenshotsViewController.view)
+		
+		screenshotsViewController.didMove(toParent: self)
+		screenshotsViewController.view.translatesAutoresizingMaskIntoConstraints = false
+		
+		NSLayoutConstraint.activate([
+			screenshotsViewController.view.topAnchor.constraint(
+				equalTo: whatsNewViewController.view.bottomAnchor, constant: 16
+			),
+			screenshotsViewController.view.leftAnchor.constraint(equalTo: self.view.leftAnchor),
+			screenshotsViewController.view.rightAnchor.constraint(equalTo: self.view.rightAnchor),
+			screenshotsViewController.view.bottomAnchor.constraint(equalTo: appDetailView.scrollView.bottomAnchor)
+		])
+	}
 }

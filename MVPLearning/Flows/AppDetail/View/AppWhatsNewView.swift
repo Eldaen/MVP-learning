@@ -75,6 +75,7 @@ final class AppWhatsNewView: UIView {
 			notesLabel.topAnchor.constraint(equalTo: subTitleLabel.bottomAnchor, constant: 16),
 			notesLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
 			notesLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
+			notesLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor)
 		])
 	}
 }
