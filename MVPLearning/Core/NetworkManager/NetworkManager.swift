@@ -15,6 +15,8 @@ final class NetworkManager {
     public typealias JSONCompletion = (AFResult<[String: Any]?>) -> Void
     
     public func dataRequest(_ request: WebRequest, then completion: DataCompletion?) {
+		print(request.description)
+		
         AF.request(request.url, method: request.method, parameters: request.parameters).validate().responseData { [weak self] response in
 			
 			switch response.result {
