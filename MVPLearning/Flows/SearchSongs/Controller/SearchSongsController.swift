@@ -18,7 +18,7 @@ final class SearchSongsController: UIViewController {
 	
 	init(presenter: SearchSongsViewOutput) {
 		self.searchSongsPresenter = presenter
-		super.init()
+		super.init(nibName: nil, bundle: nil)
 	}
 	
 	required init?(coder: NSCoder) {
