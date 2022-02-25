@@ -16,6 +16,9 @@
 		D028B2ED27C68D7000FFE60C /* AppScreenshotsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D028B2EC27C68D7000FFE60C /* AppScreenshotsViewController.swift */; };
 		D028B2EF27C68DC100FFE60C /* AppScreenshotsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D028B2EE27C68DC100FFE60C /* AppScreenshotsView.swift */; };
 		D028B2F127C6957700FFE60C /* AppScreenshotsCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D028B2F027C6957700FFE60C /* AppScreenshotsCollectionCell.swift */; };
+		D028B2F827C8CE1700FFE60C /* SearchSongsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D028B2F727C8CE1700FFE60C /* SearchSongsController.swift */; };
+		D028B2FA27C8CE3A00FFE60C /* SearchSongsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D028B2F927C8CE3A00FFE60C /* SearchSongsPresenter.swift */; };
+		D028B2FC27C8D40900FFE60C /* SearchSongsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D028B2FB27C8D40900FFE60C /* SearchSongsBuilder.swift */; };
 		D07B34E727C52B0100172807 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = D07B34E627C52B0100172807 /* Alamofire */; };
 		E0E1D2932034A3350011E01A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E1D2922034A3350011E01A /* AppDelegate.swift */; };
 		E0E1D2952034A3350011E01A /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E1D2942034A3350011E01A /* SearchViewController.swift */; };
@@ -51,6 +54,9 @@
 		D028B2EC27C68D7000FFE60C /* AppScreenshotsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppScreenshotsViewController.swift; sourceTree = "<group>"; };
 		D028B2EE27C68DC100FFE60C /* AppScreenshotsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppScreenshotsView.swift; sourceTree = "<group>"; };
 		D028B2F027C6957700FFE60C /* AppScreenshotsCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppScreenshotsCollectionCell.swift; sourceTree = "<group>"; };
+		D028B2F727C8CE1700FFE60C /* SearchSongsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSongsController.swift; sourceTree = "<group>"; };
+		D028B2F927C8CE3A00FFE60C /* SearchSongsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSongsPresenter.swift; sourceTree = "<group>"; };
+		D028B2FB27C8D40900FFE60C /* SearchSongsBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSongsBuilder.swift; sourceTree = "<group>"; };
 		E0E1D28F2034A3350011E01A /* MVPLearning.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MVPLearning.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0E1D2922034A3350011E01A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E0E1D2942034A3350011E01A /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -111,6 +117,48 @@
 			path = SearchBuilder;
 			sourceTree = "<group>";
 		};
+		D028B2F227C8CDE100FFE60C /* SearchSongs */ = {
+			isa = PBXGroup;
+			children = (
+				D028B2F627C8CE0600FFE60C /* SearchBuilder */,
+				D028B2F527C8CDFC00FFE60C /* Controller */,
+				D028B2F427C8CDF600FFE60C /* View */,
+				D028B2F327C8CDED00FFE60C /* Presenter */,
+			);
+			path = SearchSongs;
+			sourceTree = "<group>";
+		};
+		D028B2F327C8CDED00FFE60C /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				D028B2F927C8CE3A00FFE60C /* SearchSongsPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		D028B2F427C8CDF600FFE60C /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D028B2F527C8CDFC00FFE60C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D028B2F727C8CE1700FFE60C /* SearchSongsController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		D028B2F627C8CE0600FFE60C /* SearchBuilder */ = {
+			isa = PBXGroup;
+			children = (
+				D028B2FB27C8D40900FFE60C /* SearchSongsBuilder.swift */,
+			);
+			path = SearchBuilder;
+			sourceTree = "<group>";
+		};
 		DB95456C2F2DCD400ABCE8E9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -151,6 +199,7 @@
 		E0E1D2A52034A3560011E01A /* Flows */ = {
 			isa = PBXGroup;
 			children = (
+				D028B2F227C8CDE100FFE60C /* SearchSongs */,
 				E0E1D2A62034A36C0011E01A /* Search */,
 				E0E1D2A72034A3780011E01A /* AppDetail */,
 			);
@@ -466,12 +515,14 @@
 				F8114FC522A3E77500102830 /* AppDetailView.swift in Sources */,
 				E0E1D387203AE45F0011E01A /* WebRequest.swift in Sources */,
 				F8A1E03C2248382F00FE6448 /* Monads.swift in Sources */,
+				D028B2F827C8CE1700FFE60C /* SearchSongsController.swift in Sources */,
 				BA994C7D27C40828007C8578 /* AppDetailHeaderViewController.swift in Sources */,
 				D028B2E927C5337200FFE60C /* AppWhatsNewViewController.swift in Sources */,
 				E0E1D3D4203C4AA50011E01A /* UIColor+Extensions.swift in Sources */,
 				BA994C7B27C400E1007C8578 /* AppDetailHeaderView.swift in Sources */,
 				E0E1D3D1203C48D70011E01A /* AppDetailViewController.swift in Sources */,
 				E0E1D358203ADC590011E01A /* NetworkManager.swift in Sources */,
+				D028B2FA27C8CE3A00FFE60C /* SearchSongsPresenter.swift in Sources */,
 				E0E1D39C203AE6420011E01A /* ITunesSong.swift in Sources */,
 				E0E1D2952034A3350011E01A /* SearchViewController.swift in Sources */,
 				E0E1D39F203AE7400011E01A /* ImageDownloader.swift in Sources */,
@@ -486,6 +537,7 @@
 				F8114FC122A3E5EE00102830 /* AppCellModel.swift in Sources */,
 				D028B2ED27C68D7000FFE60C /* AppScreenshotsViewController.swift in Sources */,
 				D028B2EB27C5340F00FFE60C /* AppWhatsNewView.swift in Sources */,
+				D028B2FC27C8D40900FFE60C /* SearchSongsBuilder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
