@@ -83,6 +83,7 @@ extension SearchSongsController: UITableViewDataSource {
 		let song = self.searchResults[indexPath.row]
 		let cellModel = SongCellModelFactory.cellModel(from: song)
 		cell.configure(with: cellModel)
+		searchSongsPresenter.downloadImage(for: cell, using: cellModel)
 		return cell
 	}
 }

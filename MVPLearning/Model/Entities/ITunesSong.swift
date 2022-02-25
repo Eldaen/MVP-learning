@@ -21,7 +21,7 @@ public struct ITunesSong: Codable {
         case trackName = "trackName"
         case artistName = "artistName"
         case collectionName = "collectionName"
-        case artwork = "artworkUrl100"
+        case artwork = "artworkUrl60"
     }
     
     // MARK: - Init

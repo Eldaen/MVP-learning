@@ -28,6 +28,15 @@ final class SongCell: UITableViewCell {
 		return label
 	}()
 	
+	private(set) lazy var artworkImage: UIImageView = {
+		let imageView = UIImageView()
+		imageView.layer.cornerRadius = 5.0
+		imageView.layer.masksToBounds = true
+		imageView.translatesAutoresizingMaskIntoConstraints = false
+		
+		return imageView
+	}()
+	
 	// MARK: - Init
 	
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -54,25 +63,36 @@ final class SongCell: UITableViewCell {
 	}
 	
 	private func configureUI() {
+		self.addArtwork()
 		self.addTitleLabel()
 		self.addSubtitleLabel()
+	}
+	
+	private func addArtwork() {
+		self.contentView.addSubview(artworkImage)
+		NSLayoutConstraint.activate([
+			artworkImage.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 8.0),
+			artworkImage.leftAnchor.constraint(equalTo: self.contentView.leftAnchor, constant: 12.0),
+			artworkImage.heightAnchor.constraint(equalToConstant: 60),
+			artworkImage.widthAnchor.constraint(equalToConstant: 60),
+		])
 	}
 	
 	private func addTitleLabel() {
 		self.contentView.addSubview(self.titleLabel)
 		NSLayoutConstraint.activate([
-			self.titleLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 8.0),
-			self.titleLabel.leftAnchor.constraint(equalTo: self.contentView.leftAnchor, constant: 12.0),
-			self.titleLabel.rightAnchor.constraint(equalTo: self.contentView.rightAnchor, constant: -40.0)
+			titleLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 8.0),
+			titleLabel.leftAnchor.constraint(equalTo: artworkImage.rightAnchor, constant: 12.0),
+			titleLabel.rightAnchor.constraint(equalTo: self.contentView.rightAnchor, constant: -8.0)
 			])
 	}
 	
 	private func addSubtitleLabel() {
 		self.contentView.addSubview(self.subtitleLabel)
 		NSLayoutConstraint.activate([
-			self.subtitleLabel.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: 4.0),
-			self.subtitleLabel.leftAnchor.constraint(equalTo: self.contentView.leftAnchor, constant: 12.0),
-			self.subtitleLabel.rightAnchor.constraint(equalTo: self.contentView.rightAnchor, constant: -40.0)
+			subtitleLabel.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: 4.0),
+			subtitleLabel.leftAnchor.constraint(equalTo: artworkImage.rightAnchor, constant: 12.0),
+			subtitleLabel.rightAnchor.constraint(equalTo: self.contentView.rightAnchor, constant: -8.0)
 			])
 	}
 }

@@ -16,6 +16,9 @@ protocol SearchSongsViewOutput: AnyObject {
 	
 	/// Выполняет переход на подробный просмотр песни
 	func viewDidSelectApp(song query: ITunesSong)
+	
+	/// Скачивает картинку в ячейку поиска песни
+	func downloadImage(for cell: SongCell, using model: SongCellModel)
 }
 
 /// Протокол для вызова презентера из контроллера SearchSongs
@@ -23,7 +26,7 @@ protocol SearchSongsViewInput: AnyObject {
 	
 	/// Массив песен
 	var searchResults: [ITunesSong] { get set }
-	
+
 	func showError(error: Error)
 	func showNoResults()
 	func hideNoResults()
@@ -38,6 +41,9 @@ final class SearchSongsPresenter {
 	
 	/// Сервис для запросов
 	private let searchService = ITunesSearchService()
+	
+	/// Загрузчик картинок
+	let imageDownloader = ImageDownloader()
 	
 	// MARK: - Private methods
 	
@@ -73,6 +79,16 @@ extension SearchSongsPresenter: SearchSongsViewOutput {
 	func viewDidSearch(with query: String) {
 		controller?.throbber(show: true)
 		requestSongs(with: query)
+	}
+	
+	func downloadImage(for cell: SongCell, using model: SongCellModel) {
+		guard let url = model.artwork else { return }
+		imageDownloader.getImage(fromUrl: url) { image, error in
+			
+			DispatchQueue.main.async {
+				cell.artworkImage.image = image
+			}
+		}
 	}
 }
 
