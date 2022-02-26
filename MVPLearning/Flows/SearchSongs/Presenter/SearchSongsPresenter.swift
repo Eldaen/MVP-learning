@@ -39,6 +39,9 @@ final class SearchSongsPresenter {
 	/// Контроллер поиска песен
 	weak var controller: (UIViewController & SearchSongsViewInput)?
 	
+	/// Роутер для навигации
+	private let router: SearchSongsRouterInput
+	
 	/// Сервис для запросов
 	private let searchService = ITunesSearchService()
 	
