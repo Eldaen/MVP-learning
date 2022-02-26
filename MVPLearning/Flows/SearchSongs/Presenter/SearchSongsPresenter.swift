@@ -39,16 +39,21 @@ final class SearchSongsPresenter {
 	/// Контроллер поиска песен
 	weak var controller: (UIViewController & SearchSongsViewInput)?
 	
-	/// Сервис для запросов
-	private let searchService = ITunesSearchService()
+	private let router: SearchSongsRouterInput
+	private let interactor: SearchSongsInteractorInput
 	
-	/// Загрузчик картинок
-	let imageDownloader = ImageDownloader()
+	// MARK: - Init
+	
+	init(router: SearchSongsRouterInput, interactor: SearchSongsInteractorInput) {
+		self.router = router
+		self.interactor = interactor
+	}
 	
 	// MARK: - Private methods
 	
+	/// Запрашивает песни
 	private func requestSongs(with query: String) {
-		searchService.getSongs(forQuery: query) { [weak self] (result) in
+		interactor.searchSongs(for: query) { [weak self] (result) in
 			guard let self = self else { return }
 			
 			self.controller?.throbber(show: false)
@@ -67,13 +72,19 @@ final class SearchSongsPresenter {
 		}
 	}
 	
+	/// Открывает контроллер подробного просмотра песни
+	private func openSong(with song: ITunesSong) {
+		let songDetaillViewController = UIViewController()
+		controller?.navigationController?.pushViewController(songDetaillViewController, animated: true)
+	}
+	
 }
 
 // MARK: - SearchSongsViewInput
 
 extension SearchSongsPresenter: SearchSongsViewOutput {
 	func viewDidSelectApp(song: ITunesSong) {
-		
+		openSong(with: song)
 	}
 	
 	func viewDidSearch(with query: String) {
@@ -83,7 +94,7 @@ extension SearchSongsPresenter: SearchSongsViewOutput {
 	
 	func downloadImage(for cell: SongCell, using model: SongCellModel) {
 		guard let url = model.artwork else { return }
-		imageDownloader.getImage(fromUrl: url) { image, error in
+		interactor.getImage(fromUrl: url) { image, error in
 			
 			DispatchQueue.main.async {
 				cell.artworkImage.image = image
