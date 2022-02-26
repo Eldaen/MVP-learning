@@ -20,6 +20,12 @@ final class SearchSongsBuilder {
 		
 		presenter.controller = controller
 		router.controller = controller
+		
+		if #available(iOS 13.0, *) {
+			let cache = ImageCacheService()
+			interactor.cache = cache
+		}
+		
 		return controller
 	}
 }

@@ -33,13 +33,52 @@ final class SearchSongsInteractor {
 	
 	/// Загрузчик картинок
 	let imageDownloader = ImageDownloader()
+	
+	/// Кеш сервис для картинок
+	weak var cache: ImageCache?
+	
+	/// Кеш, если iOS 13 не доступен
+	var images: [String : UIImage] = [:]
 }
 
 // MARK: - SearchSongsInteractorOutput
 
 extension SearchSongsInteractor: SearchSongsInteractorInput {
 	func getImage(fromUrl url: URLConvertible, completion: @escaping (UIImage?, Error?) -> Void) {
-		imageDownloader.getImage(fromUrl: url, completion: completion)
+		
+		if #available(iOS 13.0, *) {
+			if let cache = cache,
+			   let image = cache[url] {
+				completion(image, nil)
+				return
+			}
+		} else {
+			if let urlString = try? url.asURL().absoluteString,
+			   let image = images[urlString] {
+				completion(image, nil)
+				return
+			}
+		}
+		
+		// Если в кэше нет, то качаем и в кеш добавляем
+		imageDownloader.getImage(fromUrl: url) { [weak self] image, error in
+			guard let image = image else {
+				completion(nil, error)
+				return
+			}
+			
+			if #available(iOS 13.0, *) {
+				if let cache = self?.cache {
+					cache.saveImage(image, for: url)
+				}
+			} else {
+				if let urlString = try? url.asURL().absoluteString {
+					self?.images[urlString] = image
+				}
+			}
+			
+			completion(image, nil)
+		}
 	}
 	
 	func searchSongs(for query: String, completion: @escaping (AFResult<[ITunesSong]>) -> Void) {

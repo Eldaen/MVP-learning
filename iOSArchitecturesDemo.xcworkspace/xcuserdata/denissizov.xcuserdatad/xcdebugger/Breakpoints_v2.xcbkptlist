@@ -3,4 +3,54 @@
    uuid = "A5561213-8E7C-4AEC-891B-DB2A40D84B19"
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "12410EB5-7EE0-4E34-AF55-AFBDA95D1CAA"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MVPLearning/Flows/SearchSongs/Interactor/SearchSongsInteractor.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "getImage(fromUrl:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "12410EB5-7EE0-4E34-AF55-AFBDA95D1CAA - d5e1012c40fa6f3f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MVPLearning.SearchSongsInteractor.getImage(fromUrl: Alamofire.URLConvertible, completion: (Swift.Optional&lt;__C.UIImage&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "MVPLearning"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/denissizov/Documents/GU%20iOs/Basic%20Patterns/lesson7_architectures_demo_starter%203/MVPLearning/Flows/SearchSongs/Interactor/SearchSongsInteractor.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "51"
+                  endingLineNumber = "51"
+                  offsetFromSymbolStart = "384">
+               </Location>
+               <Location
+                  uuid = "12410EB5-7EE0-4E34-AF55-AFBDA95D1CAA - d5e1012c40fa6f3f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MVPLearning.SearchSongsInteractor.getImage(fromUrl: Alamofire.URLConvertible, completion: (Swift.Optional&lt;__C.UIImage&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "MVPLearning"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/denissizov/Documents/GU%20iOs/Basic%20Patterns/lesson7_architectures_demo_starter%203/MVPLearning/Flows/SearchSongs/Interactor/SearchSongsInteractor.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "51"
+                  endingLineNumber = "51"
+                  offsetFromSymbolStart = "500">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>
