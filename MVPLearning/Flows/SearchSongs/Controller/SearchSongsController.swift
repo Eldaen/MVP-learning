@@ -91,7 +91,11 @@ extension SearchSongsController: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 
 extension SearchSongsController: UITableViewDelegate {
-	
+	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		tableView.deselectRow(at: indexPath, animated: true)
+		let song = searchResults[indexPath.row]
+		searchSongsPresenter.viewDidSelectApp(song: song)
+	}
 }
 
 // MARK: - UISearchBarDelegate
@@ -115,19 +119,22 @@ extension SearchSongsController: UISearchBarDelegate {
 // MARK: - SearchViewOutput
 
 extension SearchSongsController: SearchSongsViewInput {
+	func throbber(show: Bool) {
+		UIApplication.shared.isNetworkActivityIndicatorVisible = show
+	}
+	
 	func showError(error: Error) {
-		
+		let alert = UIAlertController(title: "Error", message: "\(error.localizedDescription)", preferredStyle: .alert)
+		let actionOk = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+		alert.addAction(actionOk)
+		self.present(alert, animated: true, completion: nil)
 	}
 	
 	func showNoResults() {
-		
+		self.searchView.emptyResultView.isHidden = false
 	}
 	
 	func hideNoResults() {
-		
-	}
-	
-	func throbber(show: Bool) {
-		
+		self.searchView.emptyResultView.isHidden = true
 	}
 }
