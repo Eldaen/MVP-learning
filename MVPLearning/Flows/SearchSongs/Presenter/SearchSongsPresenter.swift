@@ -47,6 +47,7 @@ final class SearchSongsPresenter {
 	
 	// MARK: - Private methods
 	
+	/// Запрашивает песни
 	private func requestSongs(with query: String) {
 		searchService.getSongs(forQuery: query) { [weak self] (result) in
 			guard let self = self else { return }
@@ -67,13 +68,19 @@ final class SearchSongsPresenter {
 		}
 	}
 	
+	/// Открывает контроллер подробного просмотра песни
+	private func openSong(with song: ITunesSong) {
+		let songDetaillViewController = UIViewController()
+		controller?.navigationController?.pushViewController(songDetaillViewController, animated: true)
+	}
+	
 }
 
 // MARK: - SearchSongsViewInput
 
 extension SearchSongsPresenter: SearchSongsViewOutput {
 	func viewDidSelectApp(song: ITunesSong) {
-		
+		openSong(with: song)
 	}
 	
 	func viewDidSearch(with query: String) {
