@@ -8,12 +8,18 @@
 
 import UIKit
 
+/// Билдер структуры VIPER для экрана SearchSongs
 final class SearchSongsBuilder {
+	
+	/// Собирает структуру и возвращает контроллер
 	static func build() -> (UIViewController & SearchSongsViewInput) {
-		let presenter = SearchSongsPresenter()
+		let router = SearchSongsRouter()
+		let interactor = SearchSongsInteractor()
+		let presenter = SearchSongsPresenter(router: router, interactor: interactor)
 		let controller = SearchSongsController(presenter: presenter)
 		
 		presenter.controller = controller
+		router.controller = controller
 		return controller
 	}
 }

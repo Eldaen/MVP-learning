@@ -39,20 +39,21 @@ final class SearchSongsPresenter {
 	/// Контроллер поиска песен
 	weak var controller: (UIViewController & SearchSongsViewInput)?
 	
-	/// Роутер для навигации
 	private let router: SearchSongsRouterInput
+	private let interactor: SearchSongsInteractorInput
 	
-	/// Сервис для запросов
-	private let searchService = ITunesSearchService()
+	// MARK: - Init
 	
-	/// Загрузчик картинок
-	let imageDownloader = ImageDownloader()
+	init(router: SearchSongsRouterInput, interactor: SearchSongsInteractorInput) {
+		self.router = router
+		self.interactor = interactor
+	}
 	
 	// MARK: - Private methods
 	
 	/// Запрашивает песни
 	private func requestSongs(with query: String) {
-		searchService.getSongs(forQuery: query) { [weak self] (result) in
+		interactor.searchSongs(for: query) { [weak self] (result) in
 			guard let self = self else { return }
 			
 			self.controller?.throbber(show: false)
@@ -93,7 +94,7 @@ extension SearchSongsPresenter: SearchSongsViewOutput {
 	
 	func downloadImage(for cell: SongCell, using model: SongCellModel) {
 		guard let url = model.artwork else { return }
-		imageDownloader.getImage(fromUrl: url) { image, error in
+		interactor.getImage(fromUrl: url) { image, error in
 			
 			DispatchQueue.main.async {
 				cell.artworkImage.image = image
